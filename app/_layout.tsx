@@ -1,24 +1,23 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React from 'react';
 import 'react-native-reanimated';
+import ModalScreen from './modal';
 
-import { useColorScheme } from '@/hooks/use-color-scheme';
+// Import your screens
 
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
+const Stack = createNativeStackNavigator();
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+      <Stack.Navigator screenOptions={{headerShown:false}}>
+        <Stack.Screen 
+          name="modal" 
+          component={ModalScreen}
+          options={{ 
+            presentation: 'modal', 
+            title: 'Modal' 
+          }} 
+        />
+      </Stack.Navigator>
   );
 }
