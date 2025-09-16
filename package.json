@@ -1,5 +1,5 @@
 {
-  "name": "@sdn/counterapp",
+  "name": "@sdna/counterapp",
   "main": "expo-router/entry",
   "version": "1.0.2",
   "peerDependencies": {
